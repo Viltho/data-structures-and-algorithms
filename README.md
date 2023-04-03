@@ -1,3 +1,3 @@
 # data-structures-and-algorithms
 
-![alt text](./whiteboard.png)
+![alt text](./whiteboard.jpg)
