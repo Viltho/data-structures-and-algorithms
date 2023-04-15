@@ -5,15 +5,11 @@ class LinkedList():
         self.head = None
 
     def insert(self, value):
+
         node = Node(value)
 
-        if self.head is None:
-            self.head = node
-        else:
-            current = self.head
-            while current.next is not None:
-                current = current.next
-            current.next = node
+        node.next = self.head
+        self.head = node
 
     def includes(self, value):
         if self.head is None:
