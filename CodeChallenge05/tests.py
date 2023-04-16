@@ -29,10 +29,6 @@ def test_linked_list_three(linked_list1):
     expected = "{ a } -> { b } -> Null"
     assert actual == expected
 
-def a7a():
-    actual = "a7a you guys for real please run the code and check if it includes and prints"
-    expected = "a7a you guys for real please run the code and check if it includes and prints"
-    assert actual == expected
 
 @pytest.fixture
 def linked_list1():
