@@ -1,13 +1,17 @@
-from node import Node
+class Node():
+    def __init__(self, value):
+        self.value = value
+        self.next = None
 
 class LinkedList():
     def __init__(self):
         self.head = None
 
+    counter = 0
+
     def insert(self, value):
-
+        LinkedList.counter += 1
         node = Node(value)
-
         node.next = self.head
         self.head = node
 
@@ -22,6 +26,7 @@ class LinkedList():
                 current = current.next
     
     def append(self, value):
+        LinkedList.counter += 1
         node = Node(value)
         if self.head is None:
             self.head = node
@@ -32,6 +37,7 @@ class LinkedList():
             current.next = node
 
     def insert_before(self, value, new_value):
+        LinkedList.counter += 1
         node = Node(new_value)
         if self.head is None:
             self.head = node
@@ -51,6 +57,7 @@ class LinkedList():
                     current = current.next
     
     def insert_after(self, value, new_value):
+        LinkedList.counter += 1
         node = Node(new_value)
         if self.head is None:
             self.head = node
