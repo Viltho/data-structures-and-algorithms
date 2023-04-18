@@ -15,4 +15,4 @@ if __name__ == "__main__":
     print(linked_list1)
 
     print(linked_list1.includes("a"))
-
+    

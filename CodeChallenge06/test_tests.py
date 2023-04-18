@@ -1,6 +1,6 @@
 import pytest
 
-from linkedlist import LinkedList
+from CodeChallenge06.linkedlist import LinkedList
 
 
 def test_linked_list():
