@@ -11,7 +11,7 @@ if __name__ == "__main__":
     linked_list1.insert_before("a", "D")
     linked_list1.insert_after("D", "B")
     linked_list1.delete("D")
-
+    print(linked_list1.kthfromend(2))
 
     print(linked_list1)
 
