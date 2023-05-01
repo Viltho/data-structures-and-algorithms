@@ -78,6 +78,20 @@ def test_linked_list_delete():
     expected = "{ a } -> { b } -> { B } -> { c } -> { a } -> Null"
     assert actual == expected
 
+def test_linked_list_delete():
+    linked_list1 = LinkedList()
+    linked_list1.insert("c")
+    linked_list1.insert("b")
+    linked_list1.insert("a")
+    linked_list1.append("a")
+    linked_list1.insert_before("c", "D")
+    linked_list1.insert_after("D", "B")
+    linked_list1.delete("D")
+    linked_list1.delete("b")
+    actual = linked_list1.__str__()
+    expected = "{ a } -> { B } -> { c } -> { a } -> Null"
+    assert actual == expected
+
 def test_linked_list_kthelement():
     linked_list1 = LinkedList()
     linked_list1.insert("c")
@@ -90,6 +104,18 @@ def test_linked_list_kthelement():
     linked_list1.kthfromend(2)
     actual = linked_list1.kthfromend(2)
     expected = "c"
+    assert actual == expected
+
+def test_linked_list_kthelement2():
+    linked_list1 = LinkedList()
+    linked_list1.insert("c")
+    linked_list1.insert("b")
+    linked_list1.insert("a")
+    linked_list1.append("a")
+    linked_list1.insert_before("c", "D")
+    linked_list1.insert_after("D", "B")
+    actual = linked_list1.kthfromend(3)
+    expected = "B"
     assert actual == expected
 
 # @pytest.fixture
