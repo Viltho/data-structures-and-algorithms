@@ -145,3 +145,25 @@ def zip_lists(list1, list2):
             current2=current2.next
 
     return new_list
+
+def reverse(l):
+    if l.head == None:
+        return "can not reverse"
+    else:
+        prev = None
+        current=l.head
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        l.head = prev
+        return l
+        
+def ispalindrome(l):
+    current = str(l)
+    reverse(l)
+    next = str(l)
+    if current == next:
+        return True
+    return False
