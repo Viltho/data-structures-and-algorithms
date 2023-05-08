@@ -1,4 +1,4 @@
-from node import Node
+from CodeChallenge10.node import Node
 
 class Stack:
     def __init__(self):
@@ -32,3 +32,18 @@ class Stack:
 
     def is_empty(self):
         return self.size == 0
+    
+    def __str__(self) -> str:
+        string = ""
+
+        if self.top is None:
+            return "This linked list is empty"
+        else:
+            current = self.top
+            while(current):
+                string += "{ " + f"{str(current.value)}" + " } -> "
+                current = current.next
+            
+            string = string + "Null"
+        return string
+
