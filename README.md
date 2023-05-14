@@ -15,6 +15,7 @@
 | Code Challenge 10    | [CC10](./CodeChallenge10/cc10.md)      |
 | Code Challenge 11    | [CC11](./CodeChallenge11/cc11.md)      |
 | Code Challenge 12    | [CC12](./CodeChallenge12/cc12.md)      |
+| Code Challenge 13    | [CC13](./CodeChallenge13/cc13.md)      |
 
 <!-- | Code Challenge 04    | [CC04](./CodeChallenge04/cc04.md)      |
 | Code Challenge 05    | [CC05](./CodeChallenge05/cc05.md)      |
