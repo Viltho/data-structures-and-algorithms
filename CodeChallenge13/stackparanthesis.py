@@ -6,25 +6,20 @@ def stackparanthesis(s):
             return False
         x = [*s]
         for i in x:
-            indx = x.index(i)
-            if i not in "(){}[]":
-                x.pop(indx)
-        for i in x:
-            if i in '([{':
+            print(i)
+            if i not in "()[]{}":
+                pass
+            elif i in '([{':
                 stack.push(i)
             else:
-                if stack.get_size() == 0:
+                if stack.get_size() == 0 or i == ")" and stack.top.value != '(' or i == "]" and stack.top.value != '[' or i == "}" and stack.top.value != '{':
                     return False
-                elif i == ")" and stack.top.value != '(':
-                    return False
-                elif i == "]" and stack.top.value != '[':
-                    return False
-                elif i == "}" and stack.top.value != '{':
-                    return False
-                else:
+                elif i != "]" or i != ")" or i != "}":
                     stack.pop()
                     
         if stack.get_size() > 0:
             return False
         else:
             return True
+        
+print(stackparanthesis("{}{Code}[Fellows](())"))
