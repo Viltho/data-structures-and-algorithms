@@ -14,7 +14,7 @@ def stackparanthesis(s):
             else:
                 if stack.get_size() == 0 or i == ")" and stack.top.value != '(' or i == "]" and stack.top.value != '[' or i == "}" and stack.top.value != '{':
                     return False
-                elif i != "]" or i != ")" or i != "}":
+                else:
                     stack.pop()
                     
         if stack.get_size() > 0:
