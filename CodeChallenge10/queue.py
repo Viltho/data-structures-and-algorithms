@@ -4,6 +4,7 @@ class Queue:
     def __init__(self):
         self.front = None
         self.rear = None
+        self.length = 0
 
     def enqueue(self,value):
         node = Node(value)
