@@ -58,7 +58,6 @@ class LinkedList():
 
         return slow.value
 
-
     def append(self, value):
         LinkedList.counter += 1
         node = Node(value)
