@@ -23,6 +23,8 @@
 | Code Challenge 27    | [CC27](./CodeChallenge27/cc27.md)      |
 | Code Challenge 28    | [CC28](./CodeChallenge28/cc28.md)      |
 | Code Challenge 30    | [CC30](./CodeChallenge30/cc30.md)      |
+| Code Challenge 31    | [CC31](./CodeChallenge31/cc31
+.md)      |
 
 <!-- | Code Challenge 04    | [CC04](./CodeChallenge04/cc04.md)      |
 | Code Challenge 05    | [CC05](./CodeChallenge05/cc05.md)      |
