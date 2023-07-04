@@ -1,6 +1,8 @@
 class Node():
-    def __init__(self, value):
+    def __init__(self, key, value):
+        self.key = key
         self.value = value
+        self.value2 = value
         self.next = None
 
 class LinkedList():
@@ -114,8 +116,42 @@ class LinkedList():
         else:
             current = self.head
             while(current):
-                string += "{ " + f"{str(current.value)} {str(current.value2)}" + " } -> "
+                string += "{ " + f"{str(current.key)} : {str(current.value)} , {str(current.value2)}" + " } -> "
                 current = current.next
             
-            string = string + "Null"
-        return string
+            string = string + "None"
+        return string       
+        
+dict1 = {
+    "a": 1,
+    "b": 3,
+    "c": 2,
+    "d": 3,
+    "e": 5,
+}
+
+dict2 = {
+    "z": 3
+}
+        
+def left_join(dict1, dict2):
+    linkedlist = LinkedList()
+    linkedlist.head = Node("", None)
+    current = linkedlist.head
+    counter = 0
+    
+    for key in dict1:
+        if key in dict2:
+            current.key, current.value, current.value2 = key, dict1[key], dict2[key]
+        else:
+            current.key, current.value, current.value2 = key, "Null", "Null"
+            
+        counter += 1
+        
+        if counter == len(dict1):
+            break
+        
+        current.next = Node("", None)
+        current = current.next
+        
+    return str(linkedlist)
