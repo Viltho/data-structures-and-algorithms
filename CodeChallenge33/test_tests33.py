@@ -47,3 +47,4 @@ def test_left_join_five():
     actual = left_join(dict2, dict1)
     expected = "{ b : 3 , 3 } -> { d : 4 , 3 } -> { e : 5 , 5 } -> None"
     assert expected == actual
+    
