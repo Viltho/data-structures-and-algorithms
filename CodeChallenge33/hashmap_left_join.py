@@ -135,6 +135,15 @@ dict2 = {
 }
         
 def left_join(dict1, dict2):
+    """to join dictionary 1 with 2 based on dictionary 1 items, if the items are not available in dictionary 2 return Nulls
+    else return the shared values in both dictionary 1 and dictionary 2
+
+    Args:
+        dict1 (dictionary): dictionary of items with keys and values
+        dict2 (dictionary): dictionary of items with keys and values
+    Returns:
+        linked list string: after the check shared values in both dictionary 1 and dictionary 2 are pushed into a new data structure, in our case linked list
+    """
     linkedlist = LinkedList()
     linkedlist.head = Node("", None)
     current = linkedlist.head
