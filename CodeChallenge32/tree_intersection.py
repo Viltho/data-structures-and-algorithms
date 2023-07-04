@@ -1,6 +1,11 @@
 from CodeChallenge17.breadthfirst import TreeNode, Node
 
 def create_first_tree():
+    """Creates a tree node
+
+    Returns:
+        inorder: returns the inorder traverse of the tree
+    """
     tree1 = TreeNode()
     node1 = Node(150)
     node2 = Node(100)
@@ -28,6 +33,11 @@ def create_first_tree():
     return tree1.inorder(node1)
 
 def create_second_tree():
+    """Creates a tree node
+
+    Returns:
+        inorder: returns the inorder traverse of the tree
+    """
     tree2 = TreeNode()
     node1 = Node(42)
     node2 = Node(100)
@@ -55,15 +65,24 @@ def create_second_tree():
     return tree2.inorder(node1)
 
 def tree_intersection(tree1, tree2):
+    """checks for the intersection of two binary trees
+
+    Args:
+        tree1 (Binary tree): the inorder traversal of the first tree
+        tree2 (Binary tree): the inorder traversal of the second tree
+
+    Returns:
+        set_of_commons: set of common items shared between the two trees
+    """
     first_tree = tree1
     second_tree = tree2
-    a = set()
+    set_of_commons = set()
     for item in first_tree:
         if item in second_tree:
-            a.add(item)
+            set_of_commons.add(item)
         else:
             pass
-    return a
+    return set_of_commons
     ### if i use dictionary time and space will increase
 
 print(tree_intersection(create_first_tree(), create_second_tree()))
