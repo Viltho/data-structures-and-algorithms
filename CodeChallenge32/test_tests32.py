@@ -1,15 +1,15 @@
 import pytest
 from CodeChallenge17.breadthfirst import TreeNode, Node
-from CodeChallenge32.tree_intersection import tree_intersection
+from CodeChallenge32.tree_intersection import tree_intersection, create_first_tree, create_second_tree
 
 def test_tree_intersection_one(test_BST, test_BST2):
-    assert tree_intersection(test_BST, test_BST2) == {160, 100, 200, 175, 500, 125, 350}
+    assert tree_intersection(test_BST, test_BST2) == [['100', 0], ['175', 3], ['200', 4], ['500', 6], ['160', 2],['125', 1], ['350', 5]]
     
-def test_tree_intersection_one(test_BST2, test_BST3):
-    assert tree_intersection(test_BST2, test_BST3) == {4}
+def test_tree_intersection_two(test_BST2, test_BST3):
+    assert tree_intersection(test_BST2, test_BST3) == [['4', 0]]
     
-def test_tree_intersection_one(test_BST3, test_BST4):
-    assert tree_intersection(test_BST3, test_BST4) == set()
+def test_tree_intersection_three(test_BST3, test_BST4):
+    assert tree_intersection(test_BST3, test_BST4) == []
     
 @pytest.fixture
 def test_BST():

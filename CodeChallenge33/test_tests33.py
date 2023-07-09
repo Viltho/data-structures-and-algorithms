@@ -25,12 +25,12 @@ dict4 = {
 
 def test_left_join_one():
     actual = left_join(dict1, dict2)
-    expected = "{ a : Null , Null } -> { b : 3 , 3 } -> { c : Null , Null } -> { d : 3 , 4 } -> { e : 5 , 5 } -> None"
+    expected = "{ a : 1 , Null } -> { b : 3 , 3 } -> { c : 2 , Null } -> { d : 3 , 4 } -> { e : 5 , 5 } -> None"
     assert expected == actual
      
 def test_left_join_two():
     actual = left_join(dict1, dict3)
-    expected = "{ a : Null , Null } -> { b : Null , Null } -> { c : Null , Null } -> { d : Null , Null } -> { e : Null , Null } -> None"
+    expected = "{ a : 1 , Null } -> { b : 3 , Null } -> { c : 2 , Null } -> { d : 3 , Null } -> { e : 5 , Null } -> None"
     assert expected == actual
     
 def test_left_join_three():
@@ -40,7 +40,7 @@ def test_left_join_three():
     
 def test_left_join_four():
     actual = left_join(dict2, dict4)
-    expected = "{ b : Null , Null } -> { d : Null , Null } -> { e : 5 , 5 } -> None"
+    expected = "{ b : 3 , Null } -> { d : 4 , Null } -> { e : 5 , 5 } -> None"
     assert expected == actual
     
 def test_left_join_five():
