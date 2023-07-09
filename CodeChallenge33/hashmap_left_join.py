@@ -131,7 +131,7 @@ dict1 = {
 }
 
 dict2 = {
-    "z": 3
+    "b": 3
 }
         
 def left_join(dict1, dict2):
@@ -153,7 +153,7 @@ def left_join(dict1, dict2):
         if key in dict2:
             current.key, current.value, current.value2 = key, dict1[key], dict2[key]
         else:
-            current.key, current.value, current.value2 = key, "Null", "Null"
+            current.key, current.value, current.value2 = key, dict1[key], "Null"
             
         counter += 1
         

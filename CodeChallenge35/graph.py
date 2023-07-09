@@ -1,99 +1,60 @@
-
 class Node:
-    """Node class with 3 variables value, weight, and next
-    """
-    def __init__(self, value):
+    def __init__(self, position, value):
+        self.position = position
         self.value = value
-        self.weight = None
-        self.next = []
 
 class Graph:
-    def __init__(self):
-        self.list = []
-        self.head = None
-        self.directed = False
-        self.weighted = False
-        self.counter = 0
-        
-    def add(self, node):
-        """add function to add new node to the graph
-
-        Args:
-            node : a newly created node
-        """
-        if self.head is None:
-            self.head = node
-        self.counter += 1
-        self.list.append(node)
-        
-    def add_edge(self, node1, node2):
-        """adding a link that directly refers to the corresponding node
-
-        Args:
-            node1 (node): node 1 to be linked to node 2
-            node2 (node): node 2
-
-        Returns:
-            list: list of nodes currently available in the graph
-        """
-        node1.next.append(node2)
-        return [(node.value, [node.value for node in node.next]) for node in self.list if node is not None]
-    
-    def get_nodes(self):
-        """loops through the graph.list
-
-        Returns:
-            list: list of all the nodes in the graph
-        """
-        if self.head is not None:
-            return [node.value for node in self.list]
+    def __init__(self, num_nodes, edges, directed=False, weighted=False):
+        self.num_nodes = num_nodes
+        self.directed = directed
+        self.weighted = weighted
+        self.data = [[] for _ in range(self.num_nodes)]
+        self.weight = [[] for _ in range(self.num_nodes)]
+        for edge in edges:
+            if self.weighted:
+                node1, node2, weight = edge
+                self.data[node1.position].append(node2.position)
+                self.weight[node1.position].append(weight)
+                if not directed:
+                    self.data[node2.position].append(node1.position)
+                    self.weight[node2.position].append(weight)
+            else:
+                node1, node2 = edge
+                self.data[node1.position].append(node2.position)
+                if not directed:
+                    self.data[node2.position].append(node1.position)
+                    
+    def __repr__(self):
+        result ="N | connections"
+        if self.weighted:
+            for i, (nodes, weights) in enumerate(zip(self.data, self.weight)):
+                result += "\n{} : {}".format(i, list(zip(nodes, weights)))
         else:
-            return None
+            for i, nodes in enumerate(self.data):
+                result += "\n{} : {}".format(i, nodes)
+        return result
+num_nodes = 9
+node0 = Node(0, "abdullah")
+node1 = Node(1, "abdullah shaghnubah")
+node2 = Node(2, "mustafa")
+node3 = Node(3, "amjad")
+node4 = Node(4, "nawras")
+node5 = Node(5, "abdulkareem")
+node6 = Node(6, "abdulrahman")
+node7 = Node(7, "sahm")
+node8 = Node(8, "mohammad alsmadi")
 
-    def neighbors(self, node):
-        """checks whether the node has any neighbors connected to it or not
+edges = [
+    (node0, node1, 50),
+    (node0, node2, 40),
+    (node2, node3, 50),
+    (node2, node4, 30),
+    (node1, node5, 20),
+    (node1, node6, 10),
+    (node6, node7, 25),
+    (node3, node8, 35),
+    ]
 
-        Args:
-            node (node): a specific node in the graph to check
+graph1 = Graph(num_nodes, edges, weighted=True)
+print(graph1)
 
-        Returns:
-            list: list of all the nodes in the node.next
-        """
-        if self.head is not None:
-            for x in self.list:
-                if node.value == x.value:
-                    return [node.value for node in x.next]
-                else:
-                    pass
-            return None
-        else:
-            return None
-        
-    def size(self):
-        """the counter function
-
-        Returns:
-            counter: returns the number of elements in the graph
-        """
-        if self.head is not None:
-            return self.counter
-        else:
-            return 0
-            
-            
-graph1 = Graph()
-node1 = Node("mohammad")
-node2 = Node("abdullah")
-node3 = Node("abdullah shagnubah")
-node4 = Node("mustafa")
-node5 = Node("nawras")
-graph1.add(node1)
-graph1.add(node2)
-graph1.add(node3)
-graph1.add(node4)
-graph1.add(node5)
-graph1.add_edge(node1, node2)
-graph1.add_edge(node2, node3)
-graph1.add_edge(node2, node4)
-graph1.add_edge(node4, node5)
-graph1.neighbors(node2)

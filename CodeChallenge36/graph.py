@@ -1,4 +1,4 @@
-from CodeChallenge35.graph import Graph, Node
+from CodeChallenge35.graph_test import Graph, Node
 
 def flatten(lst):
     """this function flattens a nested list of items
@@ -29,7 +29,8 @@ def breadth_first_graph(node):
     """
     if node is None:
         return None
-    return flatten([node.value] + [breadth_first_graph(node) for node in node.next])
+    for i in node.list_of_edges:
+        print(i) 
 
 # def depth_first_graph(node):
 #     if node is None:
@@ -63,5 +64,5 @@ graph1.add_edge(node4, node5)
 
 # print(graph1.head.value)
 
-print(breadth_first_graph(graph1.head))
+print(breadth_first_graph(graph1))
 # print(depth_first_graph(graph1.head))

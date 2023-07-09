@@ -1,4 +1,5 @@
 from CodeChallenge17.breadthfirst import TreeNode, Node
+from CodeChallenge30.hashtable import HashTable
 
 def create_first_tree():
     """Creates a tree node
@@ -76,14 +77,18 @@ def tree_intersection(tree1, tree2):
     """
     first_tree = tree1
     second_tree = tree2
-    set_of_commons = set()
+    set_of_commons = HashTable()
+    i = 0
     for item in first_tree:
         if item in second_tree:
-            set_of_commons.add(item)
+            set_of_commons.set_new_key_and_value(str(item), i)
+            i += 1
         else:
             pass
-    return set_of_commons
+    return [x for x in set_of_commons.item_list if x is not None]
     ### if i use dictionary time and space will increase
 
-print(tree_intersection(create_first_tree(), create_second_tree()))
+tree1 = create_first_tree()
+tree2 = create_second_tree()
+print(tree_intersection(tree1, tree2))
     
