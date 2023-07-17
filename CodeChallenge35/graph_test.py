@@ -32,6 +32,7 @@ class Graph:
         return node
         
     def add_edge(self, node1, node2, weight=0):
+        node1.next.append(node2)
         self.list_of_edges[self.edges_counter] = [node1.value, node2.value, weight]
         self.edges_counter += 1
     
@@ -58,7 +59,7 @@ class Graph:
         if self.head is not None:
             for x in self.list:
                 if node.value == x.value:
-                    return [node.value for node in x.next]
+                    return [node.value.value for node in x.next]
                 else:
                     pass
             return None
@@ -87,5 +88,5 @@ graph1.add_edge(node1, node2)
 graph1.add_edge(node2, node3)
 graph1.add_edge(node2, node4)
 graph1.add_edge(node4, node5)
-print(graph1.list_of_edges)
+# print(graph1.list_of_edges)
 

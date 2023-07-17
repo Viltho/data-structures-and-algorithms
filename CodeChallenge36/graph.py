@@ -1,68 +1,90 @@
-from CodeChallenge35.graph_test import Graph, Node
-
-def flatten(lst):
-    """this function flattens a nested list of items
-
-    Args:
-        lst (list): a list of nested lists
-
-    Returns:
-        list: flattened list of lists
-    """
-    flattened = []
-    for item in lst:
-        if isinstance(item, list):
-            flattened.extend(flatten(item))
-        else:
-            flattened.append(item)
-    return flattened
-
-def breadth_first_graph(node):
-    """this function is to draw the graph in a breadth-first manner which returns the graph in a nested lists form
-
-    Args:
-        node (node): the node to start traversing from
-
-    Returns:
-        None: If head is none
-        list: list of graph elements in traversal breadth-first order
-    """
-    if node is None:
-        return None
-    for i in node.list_of_edges:
-        print(i) 
-
-# def depth_first_graph(node):
-#     if node is None:
-#         return None
-#     stack = [node]  # Use a stack instead of a queue
-#     result = []
-#     while stack:
-#         current = stack.pop()  # Pop the top item from the stack
-#         if current is not None:
-#             result.append(current.value)  # Add value to the result list
-#             # Push non-None neighbors in reverse order to simulate depth-first order
-#             for neighbor in reversed(current.next):
-#                 stack.append(neighbor)
-#     return result
+from CodeChallenge36.queue import Node, Queue
+        
+class Graph:
+    def __init__(self, directed=False):
+        self.number_of_nodes = 0
+        self.dic_of_nodes = {}
+        self.list_of_edges = {}
+        self.directed = directed
+        
+        ### for weight calculation
+        self.sum_of_weights = 0
+        self.last_item = ""
+        
+        ### for breadth-first search
+        self.visited = []
+        self.queue = Queue()
     
-graph1 = Graph()
-node1 = Node("mohammad")
-node2 = Node("abdullah")
-node3 = Node("abdullah shagnubah")
-node4 = Node("mustafa")
-node5 = Node("nawras")
-graph1.add(node1)
-graph1.add(node2)
-graph1.add(node3)
-graph1.add(node4)
-graph1.add(node5)
-graph1.add_edge(node1, node2)
-graph1.add_edge(node2, node3)
-graph1.add_edge(node2, node4)
-graph1.add_edge(node4, node5)
+    def add_node(self, value):
+        if value in self.dic_of_nodes:
+            return "this item already exists"
+        else:
+            self.number_of_nodes += 1
+            node = Node(value)
+            self.dic_of_nodes[value] = node
+            self.list_of_edges[value] = {}
+        
+    def add_edge(self, node1, node2, weight=0):
+        if node2 in self.list_of_edges[node1]:
+            return "item already an edge"
+        else:
+            self.list_of_edges[node1].update({node2: weight})
+            if not self.directed:
+                self.list_of_edges[node2].update({node1: weight})
+    
+    def get_weight(self, list):
+        self.sum_of_weights = 0
+        self.last_item = ""
+        for item in list:
+            if self.last_item == "":
+                self.sum_of_weights += 0
+            else:
+                if item in self.list_of_edges[self.last_item]:
+                    self.sum_of_weights += self.list_of_edges[self.last_item][item]
+                else:
+                    return "Null"
+            self.last_item = item
+        return self.sum_of_weights
+    
+    def breadth_first_traversal(self,value):
+        self.queue.enqueue(value)
+        self.last_item = self.queue.front.value
+        self.visited.append(self.last_item)
+        while self.queue.front:
+            for key in self.list_of_edges[self.last_item]:
+                if key in self.visited:
+                    pass
+                else:
+                    self.queue.enqueue(key)
+                    self.visited.append(key)
+                    
+            self.queue.dequeue()
+            if self.queue.front is not None:
+                self.last_item = self.queue.front.value
+        
+        return self.visited
+    
+    # def depth_first_traversal(self,value):
 
-# print(graph1.head.value)
+            
+graph = Graph()
+graph.add_node("dammam")
+graph.add_node("riyadh")
+graph.add_node("mekkah")
+graph.add_node("medinah")
+graph.add_node("al-hassa")
+graph.add_node("jeddah")
+# print(graph.dic_of_nodes)
 
-print(breadth_first_graph(graph1))
-# print(depth_first_graph(graph1.head))
+graph.add_edge("dammam", "riyadh", 400)
+graph.add_edge("dammam", "al-hassa", 300)
+graph.add_edge("al-hassa", "riyadh", 300)
+graph.add_edge("riyadh", "mekkah", 800)
+graph.add_edge("mekkah", "jeddah", 85)
+graph.add_edge("jeddah", "medinah", 400)
+graph.add_edge("mekkah", "medinah", 450)
+# print(graph.list_of_edges)
+
+# print(graph.get_weight(["jeddah", "mekkah", "riyadh", "dammam"]))
+print(graph.breadth_first_traversal("medinah"))
+# print(graph.visited)
