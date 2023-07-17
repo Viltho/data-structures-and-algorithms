@@ -150,5 +150,5 @@ hashtable1.set_new_key_and_value("ist8", 29)
 
 # print(hashtable1.get("ist4"))
 # print(hashtable1.has("ist4"))
-print(hashtable1.keys())
-print(hashtable1.item_list)
+# print(hashtable1.keys())
+# print(hashtable1.item_list)
