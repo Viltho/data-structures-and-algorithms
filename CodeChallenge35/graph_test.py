@@ -59,12 +59,11 @@ class Graph:
         if self.head is not None:
             for x in self.list:
                 if node.value == x.value:
-                    return [node.value.value for node in x.next]
-                else:
-                    pass
+                    return [neighbour.value for neighbour in x.next]
             return None
         else:
             return None
+
         
     def size(self):
         """the counter function
