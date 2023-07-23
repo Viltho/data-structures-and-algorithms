@@ -1,5 +1,6 @@
 from CodeChallenge36.queue import Node, Queue
-   
+from CodeChallenge10.stack import Stack
+        
 class Graph:
     def __init__(self, directed=False):
         """This is the constructor for Graph instances created.
@@ -106,8 +107,27 @@ class Graph:
                 self.last_item = self.queue.front.value
         
         return self.visited
+    
+    def depth_first_traversal(self,value):
+        """finding the nodes inside the graph using the given value/ starting from the given value and traversing the graph accordingly.
 
-            
+        Args:
+            value (string or integer): this value is where the first traversal should start from.
+
+        Returns:
+            list: returns a list of the nodes in the graph
+        """
+        self.visited=[]
+        self.stack.push(value)
+        while self.stack.top:
+            current = self.stack.pop()
+            if current not in self.visited:
+                self.visited.append(current)
+            for key in self.list_of_edges[current]:
+                if key not in self.visited:
+                    self.stack.push(key)
+        return self.visited
+        
 graph = Graph()
 graph.add_node("dammam")
 graph.add_node("riyadh")
@@ -127,4 +147,4 @@ graph.add_edge("mekkah", "medinah", 450)
 # print(graph.get_weight(["medinah", "mekkah", "riyadh"]))
 # print(graph.breadth_first_traversal("medinah"))
 # print(graph.visited)
-
+print(graph.depth_first_traversal("dammam"))
