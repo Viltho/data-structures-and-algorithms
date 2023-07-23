@@ -22,7 +22,6 @@ class Graph:
         self.visited = []
         self.bfs_list = {}
         self.queue = Queue()
-        self.stack = Stack()
     
     def add_node(self, value):
         """this function is called when the node is added

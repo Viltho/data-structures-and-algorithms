@@ -117,6 +117,8 @@ class Graph:
         Returns:
             list: returns a list of the nodes in the graph
         """
+        if not self.list_of_edges:
+            return []
         self.visited=[]
         self.stack.push(value)
         while self.stack.top:
@@ -128,23 +130,45 @@ class Graph:
                     self.stack.push(key)
         return self.visited
         
-graph = Graph()
-graph.add_node("dammam")
-graph.add_node("riyadh")
-graph.add_node("mekkah")
-graph.add_node("medinah")
-graph.add_node("al-hassa")
-graph.add_node("jeddah")
-# print(graph.dic_of_nodes)
+# graph = Graph()
+# graph.add_node("dammam")
+# graph.add_node("riyadh")
+# graph.add_node("mekkah")
+# graph.add_node("medinah")
+# graph.add_node("al-hassa")
+# graph.add_node("jeddah")
+# # print(graph.dic_of_nodes)
 
-graph.add_edge("dammam", "riyadh", 400)
-graph.add_edge("dammam", "al-hassa", 300)
-graph.add_edge("riyadh", "mekkah", 800)
-graph.add_edge("mekkah", "jeddah", 85)
-graph.add_edge("jeddah", "medinah", 400)
-graph.add_edge("mekkah", "medinah", 450)
-# print(graph.list_of_edges['dammam'])
-# print(graph.get_weight(["medinah", "mekkah", "riyadh"]))
-# print(graph.breadth_first_traversal("medinah"))
-# print(graph.visited)
-print(graph.depth_first_traversal("dammam"))
+# graph.add_edge("dammam", "riyadh", 400)
+# graph.add_edge("dammam", "al-hassa", 300)
+# graph.add_edge("riyadh", "mekkah", 800)
+# graph.add_edge("mekkah", "jeddah", 85)
+# graph.add_edge("jeddah", "medinah", 400)
+# graph.add_edge("mekkah", "medinah", 450)
+# # print(graph.list_of_edges['dammam'])
+# # print(graph.get_weight(["medinah", "mekkah", "riyadh"]))
+# # print(graph.breadth_first_traversal("medinah"))
+# # print(graph.visited)
+
+
+# graph = Graph()
+# graph.add_node("A")
+# graph.add_node("B")
+# graph.add_node("D")
+
+# graph.add_node("C")
+# graph.add_node("G")
+
+# graph.add_node("E")
+# graph.add_node("H")
+# graph.add_node("F")
+
+# graph.add_edge("A", "D")
+# graph.add_edge("A", "B")
+# graph.add_edge("B", "C")
+# graph.add_edge("C", "G")
+# graph.add_edge("D", "E")
+# graph.add_edge("D", "H")
+# graph.add_edge("D", "F")
+# graph.add_edge("F", "H")
+# print(graph.depth_first_traversal("A"))
